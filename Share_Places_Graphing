@@ -4,7 +4,6 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 %matplotlib inline
-import datetime
 
 
 #加重移動平均を計算する関数
@@ -25,14 +24,14 @@ def ema(e,p):
     return ema
 
 
-#株価データ自動取得のメイン関数
+#株価データ自動取得のメインプログラム
 #SharePricesGraphing = SPG
 def SPG(start,end,company_code):
     #stooqから企業コードの株価データを取得し、テーブルデータを作成する
     df = data.DataReader(company_code,"stooq")
     df = df[(df.index>=start) & (df.index<=end)]
     
-    #グラフの軸を取得
+    #グラフの軸要素を取得
     date = df.index
     price = df['Close']
     
@@ -94,6 +93,6 @@ def SPG(start,end,company_code):
     plt.legend()
     
     
-#SPG(株価データ収集期間の初めの年月日, 株価データ収集期間の終わりの年月日, 東京証券取引所等で調べた企業コード()+.jp)
+#SPG(株価データ収集期間の初めの年月日, 株価データ収集期間の終わりの年月日, 東京証券取引所等で調べた企業コード+.jp)
 #今回は例として任天堂の企業コードを使用
 SPG('2019-04-01','2021-04-01','7974.jp')
